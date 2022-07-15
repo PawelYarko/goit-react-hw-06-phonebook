@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import addTodo from '../../redux/todos/todos-reducer';
 import s from './Form.module.css';
 
-export default function Form({ formData }) {
+export default function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const dispatch = useDispatch();
+  const addTask = () =>{
+    dispatch(addTodo({ name, number }));
+  }
   const handleChangeName = e => setName(e.currentTarget.value);
 
   const handleChangeNumber = e => setNumber(e.currentTarget.value);
 
   const onContactAdd = e => {
     e.preventDefault();
-    formData({ name, number });
+    addTask();
     setName('');
     setNumber('');
   };

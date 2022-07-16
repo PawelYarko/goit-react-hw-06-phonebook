@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
-import * as todosActions from '../../redux/todos/todos-actions';
+// import { useState } from 'react';
+// import { useSelector, useDispatch  } from 'react-redux';
+// import * as todosActions from '../../redux/todos/todos-actions';
 import Form from '../Form/Form';
 import ContactsList from '../ContactsList/ContactsList';
 import Filter from '../Filter/Filter';
@@ -9,9 +9,6 @@ import useLocalStorage from '../../hooks/useLocalStorage/useLocalStorage';
 import s from './App.module.css';
 
 export default function App() {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
-  const [filter, setFilter] = useState('');
-
 
   // const displayName = useSelector(state => state);
   
@@ -43,7 +40,7 @@ export default function App() {
   //   }
   // };
 
-  const onFilterChange = e => setFilter(e.currentTarget.value);
+  // const onFilterChange = e => setFilter(e.currentTarget.value);
 
   // const normalizedFilter = filter.toLowerCase();
   // const visibleContacts = contacts.filter(contact =>
@@ -60,10 +57,10 @@ export default function App() {
   return (
     <div className={s.container}>
       <h1>Phonebook</h1>
-      <Form />
+      <Form/>
       <div>
         <h2>Contacts</h2>
-        <Filter filter={filter} />
+        <Filter/>
         <ContactsList/>
       </div>
     </div>

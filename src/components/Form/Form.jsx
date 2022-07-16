@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import addTodo from '../../redux/todos/todos-reducer';
+import todosActions from '../../redux/todos/todos-actions';
 import s from './Form.module.css';
 
 export default function Form() {
@@ -9,7 +9,7 @@ export default function Form() {
 
   const dispatch = useDispatch();
   const addTask = () =>{
-    dispatch(addTodo({ name, number }));
+    dispatch(todosActions.addTodo({ name, number }));
   }
   const handleChangeName = e => setName(e.currentTarget.value);
 

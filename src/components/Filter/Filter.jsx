@@ -1,9 +1,23 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import changeFilter from '../../redux/todos/todos-reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import todosActions from '../../redux/todos/todos-actions';
 
-const Filter = ({filter}) => {
+const Filter = () => {
 const dispatch = useDispatch();
+const filter = useSelector(state => state.todos.filter);
+const todos = useSelector(state => state.todos.items);
+
+
+const onFilterChange = e => {
+  const normalizedFilter = e.currentTarget.value.toLowerCase();
+  console.log(normalizedFilter)
+  const visibleContacts = todos.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
+  console.log(visibleContacts)
+  dispatch(todosActions.changeFilter(normalizedFilter));
+  // dispatch(todosActions.addTodo(visibleContacts))
+}
+
 
   return (
     <div>
@@ -11,8 +25,8 @@ const dispatch = useDispatch();
       <input
         type="text"
         name="filter"
-        // value={filter}
-        onChange={() => dispatch(changeFilter({filter}))}
+        value={filter}
+        onChange={onFilterChange}
       />
     </div>
   );

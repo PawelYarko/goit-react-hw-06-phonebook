@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
-import deleteTodo from '../../redux/todos/todos-reducer'
+import todoActions from '../../redux/todos/todos-actions';
 import s from './Contacts.module.css';
 
 const ContactsList = () => {
   const dispatch = useDispatch();
   const todos = useSelector(state => state.todos.items);
-  console.log(todos)
+
   return (
     <ul>
       {todos.map(({ id, name, number }) => (
@@ -15,7 +15,7 @@ const ContactsList = () => {
           <button
             className={s.buttonDelete}
             type="button"
-            onClick={() => dispatch(deleteTodo({id}))}
+            onClick={() => dispatch(todoActions.deleteTodo(id))}
           >
             Delete
           </button>

@@ -2,22 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import todosActions from '../../redux/todos/todos-actions';
 
 const Filter = () => {
-const dispatch = useDispatch();
-const filter = useSelector(state => state.todos.filter);
-const todos = useSelector(state => state.todos.items);
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.todos.filter);
 
-
-const onFilterChange = e => {
-  const normalizedFilter = e.currentTarget.value.toLowerCase();
-  console.log(normalizedFilter)
-  const visibleContacts = todos.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
-  console.log(visibleContacts)
-  dispatch(todosActions.changeFilter(normalizedFilter));
-  // dispatch(todosActions.addTodo(visibleContacts))
-}
-
+  const onFilterChange = e => {
+    const normalizedFilter = e.currentTarget.value.toLowerCase();
+    dispatch(todosActions.changeFilter(normalizedFilter));
+  };
 
   return (
     <div>

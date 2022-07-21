@@ -1,11 +1,10 @@
 import {createAction} from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
-const addTodo = createAction('todos/add', ({name, number}) => ({
+const addTodo = createAction('todos/add', (payload) => ({
     payload:{
         id: nanoid(),
-        name,
-        number,
+        ...payload
     }
 }) );
 
